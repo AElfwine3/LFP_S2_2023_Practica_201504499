@@ -71,9 +71,10 @@ def carga_movimientos():
     print('Movimientos realizados con exito!!!')
 
 def reporte_inventario():
-    tabla = []
-    for producto in productos:
-        tabla.append([producto['nombre'], producto['cantidad'], producto['precio'], producto['cantidad'] * float(producto['precio']), producto['bodega']])
+    tabla = [
+        [producto['nombre'], producto['cantidad'], producto['precio'], producto['cantidad'] * float(producto['precio']), producto['bodega']]
+        for producto in productos
+    ]
     
     with open('reporte.txt', 'w') as file:
         file.write(tabulate(tabla, headers=['Producto', 'Cantidad', 'Precio Unitario', 'Valor Total', 'Ubicacion']))
